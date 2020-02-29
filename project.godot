@@ -1,0 +1,160 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "Board",
+"language": "GDScript",
+"path": "res://board/board.gd"
+}, {
+"base": "Sprite",
+"class": "BombBoosterChest",
+"language": "GDScript",
+"path": "res://game_objects/chest/bomb_booster_chest/bomb_booster_chest.gd"
+}, {
+"base": "Sprite",
+"class": "Cell",
+"language": "GDScript",
+"path": "res://cell/cell.gd"
+}, {
+"base": "Sprite",
+"class": "Chest",
+"language": "GDScript",
+"path": "res://game_objects/chest/chest.gd"
+}, {
+"base": "Sprite",
+"class": "Explosion",
+"language": "GDScript",
+"path": "res://explosion/explosion.gd"
+}, {
+"base": "Node",
+"class": "ExplosionF",
+"language": "GDScript",
+"path": "res://explosions_f/explosions_f.gd"
+}, {
+"base": "Node",
+"class": "ExplosionMaker",
+"language": "GDScript",
+"path": "res://explosion_maker/explosion_maker.gd"
+}, {
+"base": "Sprite",
+"class": "LifeChest",
+"language": "GDScript",
+"path": "res://game_objects/chest/life_chest/life_chest.gd"
+}, {
+"base": "Node",
+"class": "Machine",
+"language": "GDScript",
+"path": "res://util/stateMachine.gd"
+}, {
+"base": "Node",
+"class": "ObjectPlacer",
+"language": "GDScript",
+"path": "res://board/object_placer/object_placer.gd"
+}, {
+"base": "StaticBody2D",
+"class": "Obstacle",
+"language": "GDScript",
+"path": "res://game_objects/obstacle/obstacle.gd"
+}, {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://util/state.gd"
+}, {
+"base": "Node",
+"class": "Tuple",
+"language": "GDScript",
+"path": "res://util/tuple.gd"
+}, {
+"base": "Node",
+"class": "UtilFunctions",
+"language": "GDScript",
+"path": "res://util/utilFunctions.gd"
+} ]
+_global_script_class_icons={
+"Board": "",
+"BombBoosterChest": "",
+"Cell": "",
+"Chest": "",
+"Explosion": "",
+"ExplosionF": "",
+"ExplosionMaker": "",
+"LifeChest": "",
+"Machine": "",
+"ObjectPlacer": "",
+"Obstacle": "",
+"State": "",
+"Tuple": "",
+"UtilFunctions": ""
+}
+
+[application]
+
+config/name="Multiplayer Bomber"
+run/main_scene="res://lobby.tscn"
+
+[autoload]
+
+gamestate="*res://gamestate.gd"
+
+[debug]
+
+gdscript/warnings/return_value_discarded=false
+
+[display]
+
+window/size/width=1056
+window/size/height=624
+window/vsync/use_vsync=false
+window/stretch/mode="2d"
+window/stretch/aspect="expand"
+
+[gdnative]
+
+singletons=[  ]
+
+[image_loader]
+
+filter=false
+gen_mipmaps=false
+
+[input]
+
+move_down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"unicode":0,"echo":false,"script":null)
+ ]
+}
+set_bomb={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+2d_render/layer_1="player"
+2d_render/layer_2="cells"
