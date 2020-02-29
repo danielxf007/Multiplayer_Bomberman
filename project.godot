@@ -14,10 +14,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://board/board.gd"
 }, {
+"base": "StaticBody2D",
+"class": "Bomb",
+"language": "GDScript",
+"path": "res://bomb/bomb.gd"
+}, {
 "base": "Sprite",
 "class": "BombBoosterChest",
 "language": "GDScript",
 "path": "res://game_objects/chest/bomb_booster_chest/bomb_booster_chest.gd"
+}, {
+"base": "Node",
+"class": "BombExplosions",
+"language": "GDScript",
+"path": "res://bomb/bomb_explosions/bomb_explosions.gd"
 }, {
 "base": "Sprite",
 "class": "Cell",
@@ -28,6 +38,11 @@ _global_script_classes=[ {
 "class": "Chest",
 "language": "GDScript",
 "path": "res://game_objects/chest/chest.gd"
+}, {
+"base": "",
+"class": "CrossExplosion",
+"language": "GDScript",
+"path": "res://bomb/bomb_explosions/cross_explosion.gd"
 }, {
 "base": "Sprite",
 "class": "Explosion",
@@ -81,9 +96,12 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Board": "",
+"Bomb": "",
 "BombBoosterChest": "",
+"BombExplosions": "",
 "Cell": "",
 "Chest": "",
+"CrossExplosion": "",
 "Explosion": "",
 "ExplosionF": "",
 "ExplosionMaker": "",
@@ -156,5 +174,8 @@ set_bomb={
 
 [layer_names]
 
-2d_render/layer_1="player"
-2d_render/layer_2="cells"
+2d_physics/layer_1="player"
+2d_physics/layer_2="bombs"
+2d_physics/layer_3="obstacles"
+2d_physics/layer_4="game_objects"
+2d_physics/layer_5="explosion"
