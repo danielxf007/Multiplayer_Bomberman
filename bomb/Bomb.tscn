@@ -40,6 +40,13 @@ autoplay = "placed_bomb"
 anims/placed_bomb = SubResource( 2 )
 
 [node name="PlacedBombTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 
 [node name="CrossExplosion" type="Node" parent="."]
 script = ExtResource( 3 )
+LEFT_RANGE = 1
+RIGHT_RANGE = 1
+UP_RANGE = 1
+DOWN_RANGE = 1
+[connection signal="timeout" from="PlacedBombTimer" to="." method="_on_PlacedBombTimer_timeout"]

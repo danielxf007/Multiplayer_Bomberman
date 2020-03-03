@@ -17,6 +17,8 @@ func _on_Area2D_area_entered(area):
 
 
 func _on_Timer_timeout():
+	if not is_network_master():
+		return
 	for p in self.targets:
 		p.rpc("exploded", from_player)
 	self.queue_free()

@@ -39,7 +39,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game_objects/chest/chest.gd"
 }, {
-"base": "",
+"base": "Node",
+"class": "CoordinatesConversor",
+"language": "GDScript",
+"path": "res://coodinates_conversor/coordinates_conversor.gd"
+}, {
+"base": "Node",
 "class": "CrossExplosion",
 "language": "GDScript",
 "path": "res://bomb/bomb_explosions/cross_explosion.gd"
@@ -101,6 +106,7 @@ _global_script_class_icons={
 "BombExplosions": "",
 "Cell": "",
 "Chest": "",
+"CoordinatesConversor": "",
 "CrossExplosion": "",
 "Explosion": "",
 "ExplosionF": "",

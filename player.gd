@@ -6,13 +6,19 @@ puppet var puppet_pos = Vector2()
 puppet var puppet_motion = Vector2()
 
 export var stunned = false
-
+var game_board: Board
+var coordinates_conversor: CoordinatesConversor
 # Use sync because it will be called everywhere
 sync func setup_bomb(bomb_name, pos, by_who):
-	var bomb = preload("res://bomb.tscn").instance()
+	#var bomb = preload("res://bomb.tscn").instance()
+	var bomb: Bomb = preload("res://bomb/Bomb.tscn").instance()
 	bomb.set_name(bomb_name) # Ensure unique name for the bomb
 	bomb.position = pos
 	bomb.from_player = by_who
+	bomb.add_collision_exception_with(self)
+	bomb.game_board = self.game_board
+	bomb.board_coordinates = self.coordinates_conversor.get_player_coordinates_on_board(
+		self.global_position)
 	# No need to set network master to bomb, will be owned by server by default
 	get_node("../..").add_child(bomb)
 
@@ -90,3 +96,8 @@ func _ready():
 	stunned = false
 	puppet_pos = position
 
+func _on_Board_board_created(board: Board) -> void:
+	self.game_board = board
+	var cell_dim: Vector2 = self.game_board.cell_dimensions
+	self.coordinates_conversor = CoordinatesConversor.new(
+		Tuple.new(cell_dim.x, cell_dim.y))

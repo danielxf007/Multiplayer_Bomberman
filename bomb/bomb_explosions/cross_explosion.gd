@@ -1,4 +1,4 @@
-extends "res://bomb_explosions/bomb_explosions.gd"
+extends "res://bomb/bomb_explosions/bomb_explosions.gd"
 
 class_name CrossExplosion
 

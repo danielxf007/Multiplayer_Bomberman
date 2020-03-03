@@ -6,10 +6,13 @@ var board_coordinates: Tuple
 var explosion_packed_scene: PackedScene = preload("res://explosion/Explosion.tscn")
 var game_board: Board
 var explosions: Array = []
+var from_player
 
 func _ready():
 	$AnimationPlayer.play("placed_bomb")
 	$PlacedBombTimer.start()
+	print(board_coordinates.first_element)
+	print(board_coordinates.second_element)
 
 func _on_PlacedBombTimer_timeout():
 	self.bomb_explosion()
@@ -19,6 +22,7 @@ func create_explosions(explosion_range_size: int) -> void:
 # warning-ignore:unused_variable
 	for i in range(0, explosion_range_size):
 		explosion = self.explosion_packed_scene.instance()
+		explosion.from_player = self.from_player
 		self.explosions.append(explosion)
 
 func place_explosions(explosions_coordinates: Array) -> void:

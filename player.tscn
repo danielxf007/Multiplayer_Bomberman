@@ -135,7 +135,9 @@ tracks/0/keys = {
 size = 14
 font_data = ExtResource( 3 )
 
-[node name="player" type="KinematicBody2D"]
+[node name="player" type="KinematicBody2D" groups=[
+"board_listener",
+]]
 script = ExtResource( 1 )
 
 [node name="sprite" type="Sprite" parent="."]

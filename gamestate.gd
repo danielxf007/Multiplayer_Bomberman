@@ -8,7 +8,7 @@ const MAX_PEERS = 12
 
 # Name for my player
 var player_name = "The Warrior"
-
+var world
 # Names for remote players in id:name format
 var players = {}
 # Signals to let lobby GUI know what's going on
@@ -61,7 +61,7 @@ func unregister_player(id):
 
 remote func pre_start_game(spawn_points):
 	# Change scene
-	var world = load("res://world.tscn").instance()
+	world = load("res://world.tscn").instance()
 	get_tree().get_root().add_child(world)
 
 	get_tree().get_root().get_node("lobby").hide()
@@ -98,6 +98,8 @@ remote func pre_start_game(spawn_points):
 
 remote func post_start_game():
 	get_tree().set_pause(false) # Unpause and unleash the game!
+	self.world.board_created() 
+	
 
 var players_ready = []
 
