@@ -88,6 +88,7 @@ master func exploded(_by_who):
 		return
 	rpc("stun") # Stun puppets
 	stun() # Stun master - could use sync to do both at once
+	get_node("../../score").rpc("decrease_score", 1, int(self.name))
 
 func set_player_name(new_name):
 	get_node("label").set_text(new_name)

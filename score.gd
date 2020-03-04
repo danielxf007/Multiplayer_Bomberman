@@ -11,14 +11,22 @@ func _process(_delta):
 			if player_labels[p].score > winner_score:
 				winner_score = player_labels[p].score
 				winner_name = player_labels[p].name
-
+		if winner_score == 0:
+			get_node("../winner").set_text("DRAW")
+			get_node("../winner").show()
 		get_node("../winner").set_text("THE WINNER IS:\n" + winner_name)
 		get_node("../winner").show()
 
-sync func increase_score(for_who):
+sync func increase_score(amount, for_who):
 	assert(for_who in player_labels)
 	var pl = player_labels[for_who]
-	pl.score += 1
+	pl.score += amount
+	pl.label.set_text(pl.name + "\n" + str(pl.score))
+
+sync func decrease_score(amount, to_who):
+	assert(to_who in player_labels)
+	var pl = player_labels[to_who]
+	pl.score -= amount
 	pl.label.set_text(pl.name + "\n" + str(pl.score))
 
 func add_player(id, new_player_name):

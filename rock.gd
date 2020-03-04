@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+const ROCK_POINTS: int = 1
 var cell: Cell
 # Sent to everyone else
 puppet func do_explosion():
@@ -10,5 +11,5 @@ puppet func do_explosion():
 # Received by owner of the rock
 master func exploded(by_who):
 	rpc("do_explosion") # Re-sent to puppet rocks
-	get_node("../../score").rpc("increase_score", by_who)
+	get_node("../../score").rpc("increase_score", self.ROCK_POINTS, by_who)
 	do_explosion()
