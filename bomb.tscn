@@ -102,7 +102,6 @@ shape = SubResource( 1 )
 shape = SubResource( 2 )
 
 [node name="explosion1" type="Particles2D" parent="."]
-emitting = false
 amount = 10
 lifetime = 0.5
 one_shot = true
@@ -112,7 +111,6 @@ texture = ExtResource( 3 )
 
 [node name="explosion2" type="Particles2D" parent="."]
 rotation = 1.57162
-emitting = false
 one_shot = true
 explosiveness = 0.95
 process_material = SubResource( 5 )

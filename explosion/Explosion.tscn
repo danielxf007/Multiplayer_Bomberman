@@ -4,7 +4,7 @@
 [ext_resource path="res://explosion.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 23, 23 )
+extents = Vector2( 22, 22 )
 
 [node name="Explosion" type="Sprite"]
 texture = ExtResource( 2 )
@@ -19,6 +19,5 @@ shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
-[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

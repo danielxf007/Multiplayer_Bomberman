@@ -6,13 +6,13 @@ export(int) var CHOICE_OBJECT: int = 10
 export(int) var CHOICE_CHEST_TYPE: int = 10
 export(Array) var CHOICE_CHEST_INTERVAL: Array  = [0, 1, 2]
 export(Array) var CHOICE_LIFE_CHEST_INTERVAL: Array = [0, 1, 2] 
-var obstacle_packed_scene: PackedScene = preload("res://game_objects/obstacle/Obstacle.tscn")
+var obstacle_packed_scene: PackedScene = preload("res://rock.tscn")
 var life_chest_p_scene: PackedScene = preload("res://game_objects/chest/life_chest/LifeChest.tscn")
 var boost_chest_p_scene: PackedScene = preload("res://game_objects/chest/bomb_booster_chest/BombBoosterChest.tscn")
 var game_board: Board
 var cell: Cell
 
-func _ready():
+func init():
 	self.organize_obstacle_cells(not self.game_board.PATTERN_ON_OFF,
 	self.game_board.board_size)
 
@@ -37,17 +37,16 @@ func organize_obstacle_cells(flag: bool, matrix_size: Vector2) -> void:
 		i += 1
 
 func place_obstacle() -> void:
-	var obstacle: Obstacle
+	var obstacle
 	obstacle = self.obstacle_packed_scene.instance()
-	self.game_board.add_child(obstacle)
+	self.game_board.get_node("rocks").add_child(obstacle)
 	obstacle.global_position = self.cell.global_position
 	self.cell.element = obstacle
-	obstacle.cell = self.cell
 	
 
 func place_chest(chest_packed_scene: PackedScene) -> void:
 	var chest: Chest = chest_packed_scene.instance()
-	self.game_board.add_child(chest)
+	self.game_board.get_node("Chests").add_child(chest)
 	chest.global_position = self.cell.global_position
 
 func place_obstacle_and_chest() -> void:

@@ -50,9 +50,9 @@ one_shot = true
 
 [node name="CrossExplosion" type="Node" parent="."]
 script = ExtResource( 3 )
-LEFT_RANGE = 1
-RIGHT_RANGE = 1
-UP_RANGE = 1
-DOWN_RANGE = 1
+LEFT_RANGE = 2
+RIGHT_RANGE = 2
+UP_RANGE = 2
+DOWN_RANGE = 2
 [connection signal="timeout" from="PlacedBombTimer" to="." method="_on_PlacedBombTimer_timeout"]
 [connection signal="timeout" from="ExplosionTime" to="." method="_on_ExplosionTime_timeout"]
