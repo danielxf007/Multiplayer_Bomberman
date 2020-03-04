@@ -1,11 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://board/board.gd" type="Script" id=1]
-[ext_resource path="res://board/object_placer/ObjectPlacer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://rock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://score.gd" type="Script" id=3]
 [ext_resource path="res://montserrat.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://board/object_placer/ObjectPlacer.tscn" type="PackedScene" id=5]
 [ext_resource path="res://art/off_square.png" type="Texture" id=6]
 [ext_resource path="res://art/on_square.png" type="Texture" id=7]
+[ext_resource path="res://tileset.tres" type="TileSet" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 44
@@ -19,13 +21,73 @@ CELL_CONTAINER_SIZE = Vector2( 12, 12 )
 ON_CELL = ExtResource( 7 )
 OFF_CELL = ExtResource( 6 )
 
-[node name="ObjectPlacer" parent="." instance=ExtResource( 2 )]
+[node name="ObjectPlacer" parent="." instance=ExtResource( 5 )]
 
 [node name="Cells" type="Node2D" parent="."]
 
 [node name="Chests" type="Node2D" parent="."]
 
 [node name="rocks" type="Node2D" parent="."]
+
+[node name="rock" parent="rocks" instance=ExtResource( 2 )]
+position = Vector2( 72, 24 )
+
+[node name="rock11" parent="rocks" instance=ExtResource( 2 )]
+position = Vector2( 72, 600 )
+
+[node name="rock2" parent="rocks" instance=ExtResource( 2 )]
+position = Vector2( 168, 24 )
+
+[node name="rock12" parent="rocks" instance=ExtResource( 2 )]
+position = Vector2( 168, 600 )
+
+[node name="rock3" parent="rocks" instance=ExtResource( 2 )]
+position = Vector2( 264, 24 )
+
+[node name="rock13" parent="rocks" instance=ExtResource( 2 )]
+position = Vector2( 264, 600 )
+
+[node name="rock4" parent="rocks" instance=ExtResource( 2 )]
+position = Vector2( 360, 24 )
+
+[node name="rock14" parent="rocks" instance=ExtResource( 2 )]
+position = Vector2( 360, 600 )
+
+[node name="rock5" parent="rocks" instance=ExtResource( 2 )]
+position = Vector2( 456, 24 )
+
+[node name="rock15" parent="rocks" instance=ExtResource( 2 )]
+position = Vector2( 456, 600 )
+
+[node name="rock6" parent="rocks" instance=ExtResource( 2 )]
+position = Vector2( 552, 24 )
+
+[node name="rock16" parent="rocks" instance=ExtResource( 2 )]
+position = Vector2( 552, 600 )
+
+[node name="rock7" parent="rocks" instance=ExtResource( 2 )]
+position = Vector2( 648, 24 )
+
+[node name="rock17" parent="rocks" instance=ExtResource( 2 )]
+position = Vector2( 648, 600 )
+
+[node name="rock8" parent="rocks" instance=ExtResource( 2 )]
+position = Vector2( 744, 24 )
+
+[node name="rock18" parent="rocks" instance=ExtResource( 2 )]
+position = Vector2( 744, 600 )
+
+[node name="rock9" parent="rocks" instance=ExtResource( 2 )]
+position = Vector2( 840, 24 )
+
+[node name="rock19" parent="rocks" instance=ExtResource( 2 )]
+position = Vector2( 840, 600 )
+
+[node name="rock10" parent="rocks" instance=ExtResource( 2 )]
+position = Vector2( 936, 24 )
+
+[node name="rock20" parent="rocks" instance=ExtResource( 2 )]
+position = Vector2( 936, 600 )
 
 [node name="spawn_points" type="Node2D" parent="."]
 
@@ -84,4 +146,10 @@ text = "EXIT GAME"
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2( 528, 311 )
 current = true
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 48, 48 )
+format = 1
+tile_data = PoolIntArray( -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, -65525, 0, 0, -65524, 0, 0, -65523, 0, 0, -65522, 0, 0, -65521, 0, 0, -65520, 0, 0, -65519, 0, 0, -65518, 0, 0, -65517, 0, 0, -65516, 0, 0, -65515, 0, 0, 65535, 0, 0, 22, 0, 0, 131071, 0, 0, 65558, 0, 0, 196607, 0, 0, 131094, 0, 0, 262143, 0, 0, 196630, 0, 0, 327679, 0, 0, 262166, 0, 0, 393215, 0, 0, 327702, 0, 0, 458751, 0, 0, 393238, 0, 0, 524287, 0, 0, 458774, 0, 0, 589823, 0, 0, 524310, 0, 0, 655359, 0, 0, 589846, 0, 0, 720895, 0, 0, 655382, 0, 0, 786431, 0, 0, 720918, 0, 0, 851967, 0, 0, 786454, 0, 0, 851968, 0, 0, 851969, 0, 0, 851970, 0, 0, 851971, 0, 0, 851972, 0, 0, 851973, 0, 0, 851974, 0, 0, 851975, 0, 0, 851976, 0, 0, 851977, 0, 0, 851978, 0, 0, 851979, 0, 0, 851980, 0, 0, 851981, 0, 0, 851982, 0, 0, 851983, 0, 0, 851984, 0, 0, 851985, 0, 0, 851986, 0, 0, 851987, 0, 0, 851988, 0, 0, 851989, 0, 0 )
 [connection signal="pressed" from="winner/exit_game" to="score" method="_on_exit_game_pressed"]

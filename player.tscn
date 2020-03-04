@@ -138,6 +138,7 @@ font_data = ExtResource( 3 )
 [node name="player" type="KinematicBody2D" groups=[
 "board_listener",
 ]]
+collision_mask = 49
 script = ExtResource( 1 )
 
 [node name="sprite" type="Sprite" parent="."]
