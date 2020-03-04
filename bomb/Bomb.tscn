@@ -28,6 +28,7 @@ collision_layer = 2
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+self_modulate = Color( 1, 0, 0, 1 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 150, 4, 40, 43 )
@@ -43,6 +44,10 @@ anims/placed_bomb = SubResource( 2 )
 wait_time = 2.0
 one_shot = true
 
+[node name="ExplosionTime" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [node name="CrossExplosion" type="Node" parent="."]
 script = ExtResource( 3 )
 LEFT_RANGE = 1
@@ -50,3 +55,4 @@ RIGHT_RANGE = 1
 UP_RANGE = 1
 DOWN_RANGE = 1
 [connection signal="timeout" from="PlacedBombTimer" to="." method="_on_PlacedBombTimer_timeout"]
+[connection signal="timeout" from="ExplosionTime" to="." method="_on_ExplosionTime_timeout"]

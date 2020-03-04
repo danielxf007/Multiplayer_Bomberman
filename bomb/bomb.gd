@@ -11,8 +11,7 @@ var from_player
 func _ready():
 	$AnimationPlayer.play("placed_bomb")
 	$PlacedBombTimer.start()
-	print(board_coordinates.first_element)
-	print(board_coordinates.second_element)
+	$ExplosionTime.start()
 
 func _on_PlacedBombTimer_timeout():
 	self.bomb_explosion()
@@ -49,3 +48,7 @@ func explode() -> void:
 
 func bomb_explosion() -> void:
 	self.explode()
+
+
+func _on_ExplosionTime_timeout():
+	self.queue_free()

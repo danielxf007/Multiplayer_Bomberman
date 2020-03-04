@@ -89,6 +89,7 @@ tracks/3/keys = {
 script = ExtResource( 1 )
 
 [node name="sprite" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -2.92606, -2.92606 )
 texture = ExtResource( 2 )
 region_enabled = true
