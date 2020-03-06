@@ -39,9 +39,7 @@ func _physics_process(_delta):
 			motion += Vector2(0, -1)
 		if Input.is_action_pressed("move_down"):
 			motion += Vector2(0, 1)
-
 		var bombing = Input.is_action_pressed("set_bomb")
-
 		if stunned:
 			bombing = false
 			motion = Vector2()

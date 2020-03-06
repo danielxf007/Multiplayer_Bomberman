@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://board/board.gd" type="Script" id=1]
 [ext_resource path="res://art/osb_left.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://art/osb_jump.png" type="Texture" id=8]
 [ext_resource path="res://art/osb_fire.png" type="Texture" id=9]
 [ext_resource path="res://art/osb_right.png" type="Texture" id=10]
+[ext_resource path="res://Joystick/Joystick.tscn" type="PackedScene" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 44
@@ -143,4 +144,7 @@ position = Vector2( 850, 442.279 )
 scale = Vector2( 1.5, 1.5 )
 normal = ExtResource( 9 )
 action = "set_bomb"
+
+[node name="Joystick" parent="." instance=ExtResource( 11 )]
+position = Vector2( 100, 100 )
 [connection signal="pressed" from="winner/exit_game" to="score" method="_on_exit_game_pressed"]
