@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
 const MOTION_SPEED = 90.0
-const VERTICAL_FRAMES: float = 12.0
-const HORIZONTAL_FRAMES: float = 8.0
+const VERTICAL_FRAMES: float = 4.0
+const HORIZONTAL_FRAMES: float = 4.0
 puppet var puppet_pos = Vector2()
 puppet var puppet_motion = Vector2()
 
@@ -102,10 +102,11 @@ func _on_Board_board_created(board: Board) -> void:
 	self.game_board = board
 	self.coordinates_conversor = CoordinatesConversor.new(
 		self.game_board.cell_dim)
+	self.scale_player()
 
-func scale_rock() -> void:
+func scale_player() -> void:
 	var texture_dim: Vector2 = $sprite.texture.get_size()
 	texture_dim.x/= self.VERTICAL_FRAMES
 	texture_dim.y/= self.HORIZONTAL_FRAMES
-	self.scale.x=self.dimensions.first_element/texture_dim.x
-	self.scale.y=self.dimensions.second_element/texture_dim.y
+	self.scale.x=self.game_board.cell_dim.first_element/texture_dim.x
+	self.scale.y=self.game_board.cell_dim.second_element/texture_dim.y
