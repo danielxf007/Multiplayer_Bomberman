@@ -14,22 +14,22 @@ var cell: Cell
 
 func init():
 	self.organize_obstacle_cells(not self.game_board.PATTERN_ON_OFF,
-	self.game_board.board_size)
+	self.game_board.dimensions)
 
 func _on_Board_board_created(board):
 	self.game_board = board
 
-func organize_obstacle_cells(flag: bool, matrix_size: Vector2) -> void:
+func organize_obstacle_cells(flag: bool, board_dimensions: Tuple) -> void:
 	var i = 1
 	var j = 0
 	var pattern = flag
 	var matrix_of_cells: Array = self.game_board.matrix_of_cells
-	while i < matrix_size.y-1:
+	while i < board_dimensions.first_element-1:
 		if pattern:
 			j = 0
 		else:
 			j = 1
-		while j < matrix_size.x:
+		while j < board_dimensions.second_element:
 			self.cell = matrix_of_cells[i][j]
 			self.place_object()
 			j += 2

@@ -14,13 +14,6 @@ func has_reached_upper_bound(upperBound, number) -> bool:
 func number_in_range(lower_bound, upper_bound, number) -> bool:
 	return lower_bound <= number and number <= upper_bound
 
-
-func get_dimensions_matrix(matrix: Array) -> Tuple:
-	var column_n: int = 0
-	for element in matrix[0]:
-		column_n += 1
-	return Tuple.new(matrix.size(), column_n) 
-
 func is_inside_matrix(matrix_dim: Tuple, coord: Tuple) -> bool:
 	return (self.number_in_range(0, matrix_dim.first_element-1,
 	 coord.first_element) and self.number_in_range(0,
