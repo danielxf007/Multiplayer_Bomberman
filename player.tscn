@@ -177,28 +177,33 @@ align = 1
 [node name="PlayerInput" type="CanvasLayer" parent="."]
 
 [node name="Left" type="TouchScreenButton" parent="PlayerInput"]
-position = Vector2( 5, 511.909 )
+position = Vector2( 5, 450 )
+scale = Vector2( 1.5, 1.5 )
 normal = ExtResource( 4 )
 action = "move_left"
 
 [node name="Right" type="TouchScreenButton" parent="PlayerInput"]
-position = Vector2( 125, 514.63 )
+position = Vector2( 165, 450 )
+scale = Vector2( 1.5, 1.5 )
 normal = ExtResource( 5 )
 action = "move_right"
 
 [node name="Up" type="TouchScreenButton" parent="PlayerInput"]
-position = Vector2( 63, 459.523 )
+position = Vector2( 85, 380 )
+scale = Vector2( 1.5, 1.5 )
 normal = ExtResource( 6 )
 action = "move_up"
 
 [node name="Down" type="TouchScreenButton" parent="PlayerInput"]
-position = Vector2( 125.577, 623.952 )
+position = Vector2( 180, 623.952 )
 rotation = 3.14159
+scale = Vector2( 1.5, 1.5 )
 normal = ExtResource( 6 )
 action = "move_down"
 
 [node name="Bomb" type="TouchScreenButton" parent="PlayerInput"]
 position = Vector2( 1053.2, 618.511 )
 rotation = 3.14159
+scale = Vector2( 1.5, 1.5 )
 normal = ExtResource( 7 )
 action = "set_bomb"
