@@ -1,5 +1,5 @@
 extends StaticBody2D
-
+class_name Wall
 var dimensions: Tuple
 
 func scale_wall() -> void:
