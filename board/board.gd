@@ -32,6 +32,24 @@ func _ready():
 	self.organize_matrix_of_cells(self.PATTERN_ON_OFF, 
 	self.dimensions, self.ON_CELL, self.OFF_CELL)
 
+func create_column_cells(starting_point: Vector2, n_cells: int,
+ cell_dimensions: Tuple, cell_packed_scene: PackedScene) -> Array:
+	var cell: Cell = cell_packed_scene.instance()
+	self.cells_node.add_child(cell)
+	cell.dimensions = cell_dimensions
+	cell.position = starting_point
+	var cell_column: Array = [cell]
+	var before_cell: Cell
+	for j in range(1, n_cells):
+			cell = cell_packed_scene.instance()
+			self.cells_node.add_child(cell)
+			cell.dimensions = cell_dimensions
+			before_cell = cell_column[j-1]
+			cell.position.x = (before_cell.position.x +
+			before_cell.dimensions.first_element)
+			cell.position.y = before_cell.position.y
+			cell_column.append(cell)
+	return cell_column
 
 func create_matrix(matrix_top_pos: Vector2, n_rows: int, n_columns: int,
 cell_dimensions: Tuple, cell_scene: PackedScene) -> Array:
@@ -84,24 +102,7 @@ on_cell: Texture, off_cell: Texture) -> void:
 func organize_surroundings(wall_packed_scene: PackedScene) -> void:
 	var wall: Wall
 
-func create_column_cells(starting_point: Vector2, n_cells: int,
- cell_dimensions: Tuple, cell_packed_scene: PackedScene) -> Array:
-	var cell: Cell = cell_packed_scene.instance()
-	self.cells_node.add_child(cell)
-	cell.dimensions = cell_dimensions
-	cell.position = starting_point
-	var cell_column: Array = [cell]
-	var before_cell: Cell
-	for j in range(1, n_cells):
-			cell = cell_packed_scene.instance()
-			self.cells_node.add_child(cell)
-			cell.dimensions = cell_dimensions
-			before_cell = cell_column[j-1]
-			cell.position.x = (before_cell.position.x +
-			before_cell.dimensions.first_element)
-			cell.position.y = before_cell.position.y
-			cell_column.append(cell)
-	return cell_column
+
 
 func board_created() -> void:
 	for element in self.get_tree().get_nodes_in_group("board_listener"):
