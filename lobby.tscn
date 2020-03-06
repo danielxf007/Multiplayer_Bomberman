@@ -80,6 +80,7 @@ margin_bottom = 54.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 text = "The Warrior"
+max_length = 20
 
 [node name="ip_label" type="Label" parent="connect"]
 margin_left = 15.0
@@ -98,6 +99,7 @@ margin_bottom = 109.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 text = "127.0.0.1"
+max_length = 20
 
 [node name="host" type="Button" parent="connect"]
 margin_left = 181.0
