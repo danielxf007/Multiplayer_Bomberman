@@ -75,7 +75,6 @@ func organize_on_cells(flag: bool, board_dimensions: Tuple,
 			j = 1
 		while j < board_dimensions.second_element:
 			self.matrix_of_cells[i][j].texture = on_cell
-			self.matrix_of_cells[i][j].scale_cell()
 			j += 2
 		pattern = not pattern
 		i += 1
@@ -92,7 +91,6 @@ func organize_off_cells(flag: bool, board_dimensions: Tuple,
 			j = 0
 		while j < board_dimensions.second_element:
 			self.matrix_of_cells[i][j].texture = off_cell
-			self.matrix_of_cells[i][j].scale_cell()
 			j += 2
 		pattern = not pattern
 		i += 1
