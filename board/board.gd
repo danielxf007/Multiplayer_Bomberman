@@ -2,7 +2,6 @@ extends Node
 signal board_created(board)
 class_name Board
 
-export(Vector2) var cell_dimensions = Vector2(1, 1)
 export(Vector2) var board_top_pos: Vector2 = Vector2()
 export(Texture) var ON_CELL
 export(Texture) var OFF_CELL
@@ -12,7 +11,6 @@ export(float) var NUMBER_OF_CELLS_ROWS: float = 13
 var dimensions: Tuple
 var cell_dim: Tuple 
 var cells_node
-var board_size: Vector2
 var matrix_of_cells: Array
 
 
@@ -22,19 +20,16 @@ func _ready():
 	self.cells_node = $Cells
 	var window: Viewport = self.get_parent().get_viewport()
 	var window_size: Vector2 = window.size
-	self.board_size = Vector2(floor(window.size.x/self.cell_dimensions.x),
-	floor(window.size.y/ self.cell_dimensions.y))
 	self.cell_dim = Tuple.new(window_size.x/self.NUMBER_OF_CELLS_COLUMNS,
 	window_size.y/self.NUMBER_OF_CELLS_ROWS)
 	self.matrix_of_cells = self.create_matrix(self.board_top_pos,
-	self.dimensions, self.cell_dimensions,
-	preload("res://cell/Cell.tscn"))
+	self.dimensions, preload("res://cell/Cell.tscn"))
 	self.organize_matrix_of_cells(self.PATTERN_ON_OFF, 
 	self.dimensions, self.ON_CELL, self.OFF_CELL)
 
 
 func create_matrix(matrix_top_pos: Vector2, board_dimensions: Tuple,
- cell_size: Vector2,cell_scene: PackedScene) -> Array:
+cell_scene: PackedScene) -> Array:
 	var one_x_n_matrix: Array = []
 	var cell: Cell
 	var before_cell: Cell
@@ -42,17 +37,15 @@ func create_matrix(matrix_top_pos: Vector2, board_dimensions: Tuple,
 		if i != 0:
 			cell = cell_scene.instance()
 			self.cells_node.add_child(cell)
-			cell.cell_size = cell_size
 			cell.dimensions = self.cell_dim
 			before_cell = one_x_n_matrix[i-1][0]
 			cell.position.x = matrix_top_pos.x
 			cell.position.y = (before_cell.position.y +
-			before_cell.cell_size.y)
+			before_cell.dimensions.second_element)
 			one_x_n_matrix.append([cell])
 		else:
 			cell = cell_scene.instance()
 			self.cells_node.add_child(cell)
-			cell.cell_size = cell_size
 			cell.dimensions = self.cell_dim
 			cell.position = matrix_top_pos
 			one_x_n_matrix.append([cell])
@@ -63,11 +56,10 @@ func create_matrix(matrix_top_pos: Vector2, board_dimensions: Tuple,
 		for j in range(1, board_dimensions.second_element):
 			cell = cell_scene.instance()
 			self.cells_node.add_child(cell)
-			cell.cell_size = cell_size
 			cell.dimensions = self.cell_dim
 			before_cell = cell_matrix[i][j-1]
 			cell.position.x = (before_cell.position.x +
-			before_cell.cell_size.x)
+			before_cell.dimensions.first_element)
 			cell.position.y = before_cell.position.y
 			cell_matrix[i].append(cell)
 	return cell_matrix

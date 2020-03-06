@@ -15,7 +15,6 @@ font_data = ExtResource( 4 )
 
 [node name="world" type="Node2D"]
 script = ExtResource( 1 )
-cell_dimensions = Vector2( 48, 48 )
 board_top_pos = Vector2( 24, 24 )
 ON_CELL = ExtResource( 7 )
 OFF_CELL = ExtResource( 6 )
