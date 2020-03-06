@@ -19,7 +19,6 @@ var walls: Node2D
 func _ready():
 	self.dimensions = Tuple.new(self.NUMBER_OF_CELLS_ROWS,
 	 self.NUMBER_OF_CELLS_COLUMNS)
-	var window_size: Vector2 = self.get_viewport().size
 	self.cells_node = $Cells
 	self.walls = $walls
 	self.cell_dim = Tuple.new(self.CELL_X_DIM, self.CELL_Y_DIM)

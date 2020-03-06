@@ -1,11 +1,15 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://board/board.gd" type="Script" id=1]
+[ext_resource path="res://art/osb_left.png" type="Texture" id=2]
 [ext_resource path="res://score.gd" type="Script" id=3]
 [ext_resource path="res://montserrat.otf" type="DynamicFontData" id=4]
 [ext_resource path="res://board/object_placer/ObjectPlacer.tscn" type="PackedScene" id=5]
 [ext_resource path="res://art/off_square.png" type="Texture" id=6]
 [ext_resource path="res://art/on_square.png" type="Texture" id=7]
+[ext_resource path="res://art/osb_jump.png" type="Texture" id=8]
+[ext_resource path="res://art/osb_fire.png" type="Texture" id=9]
+[ext_resource path="res://art/osb_right.png" type="Texture" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 44
@@ -81,4 +85,62 @@ size_flags_horizontal = 2
 size_flags_vertical = 2
 custom_fonts/font = SubResource( 1 )
 text = "EXIT GAME"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Right2" type="TouchScreenButton" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 960, 435 )
+scale = Vector2( 1.5, 3 )
+normal = ExtResource( 10 )
+action = "move_right"
+
+[node name="Left" type="TouchScreenButton" parent="CanvasLayer"]
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 0, 435 )
+scale = Vector2( 1.5, 3 )
+normal = ExtResource( 2 )
+action = "move_left"
+
+[node name="Up" type="TouchScreenButton" parent="CanvasLayer"]
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 90, 335 )
+scale = Vector2( 1.5, 1.5 )
+normal = ExtResource( 8 )
+action = "move_up"
+
+[node name="Up2" type="TouchScreenButton" parent="CanvasLayer"]
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 850, 335 )
+scale = Vector2( 1.5, 1.5 )
+normal = ExtResource( 8 )
+action = "move_up"
+
+[node name="Down" type="TouchScreenButton" parent="CanvasLayer"]
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 185, 634 )
+rotation = -3.14159
+scale = Vector2( 1.5, 1.5 )
+normal = ExtResource( 8 )
+action = "move_down"
+
+[node name="Down2" type="TouchScreenButton" parent="CanvasLayer"]
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 950, 634 )
+rotation = -3.14159
+scale = Vector2( 1.5, 1.5 )
+normal = ExtResource( 8 )
+action = "move_down"
+
+[node name="Bomb" type="TouchScreenButton" parent="CanvasLayer"]
+position = Vector2( 92.4466, 442.28 )
+scale = Vector2( 1.5, 1.5 )
+normal = ExtResource( 9 )
+action = "set_bomb"
+
+[node name="Bomb2" type="TouchScreenButton" parent="CanvasLayer"]
+position = Vector2( 850, 442.279 )
+scale = Vector2( 1.5, 1.5 )
+normal = ExtResource( 9 )
+action = "set_bomb"
 [connection signal="pressed" from="winner/exit_game" to="score" method="_on_exit_game_pressed"]
