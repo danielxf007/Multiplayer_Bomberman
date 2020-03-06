@@ -9,6 +9,7 @@ export(Texture) var OFF_CELL
 export(bool) var PATTERN_ON_OFF = true
 export(float) var NUMBER_OF_CELLS_COLUMNS: float = 22
 export(float) var NUMBER_OF_CELLS_ROWS: float = 13
+var dimensions: Tuple
 var cell_dim: Tuple 
 var cells_node
 var board_size: Vector2
@@ -16,6 +17,8 @@ var matrix_of_cells: Array
 
 
 func _ready():
+	self.dimensions = Tuple.new(self.NUMBER_OF_CELLS_ROWS,
+	 self.NUMBER_OF_CELLS_COLUMNS)
 	self.cells_node = $Cells
 	var window: Viewport = self.get_parent().get_viewport()
 	var window_size: Vector2 = window.size
@@ -24,18 +27,18 @@ func _ready():
 	self.cell_dim = Tuple.new(window_size.x/self.NUMBER_OF_CELLS_COLUMNS,
 	window_size.y/self.NUMBER_OF_CELLS_ROWS)
 	self.matrix_of_cells = self.create_matrix(self.board_top_pos,
-	self.board_size, self.cell_dimensions,
+	self.dimensions, self.cell_dimensions,
 	preload("res://cell/Cell.tscn"))
 	self.organize_matrix_of_cells(self.PATTERN_ON_OFF, 
-	self.board_size, self.ON_CELL, self.OFF_CELL)
+	self.dimensions, self.ON_CELL, self.OFF_CELL)
 
 
-func create_matrix(matrix_top_pos: Vector2, dimensions: Vector2,
+func create_matrix(matrix_top_pos: Vector2, board_dimensions: Tuple,
  cell_size: Vector2,cell_scene: PackedScene) -> Array:
 	var one_x_n_matrix: Array = []
 	var cell: Cell
 	var before_cell: Cell
-	for i in range(0, dimensions.y):
+	for i in range(0, board_dimensions.first_element):
 		if i != 0:
 			cell = cell_scene.instance()
 			self.cells_node.add_child(cell)
@@ -54,10 +57,10 @@ func create_matrix(matrix_top_pos: Vector2, dimensions: Vector2,
 			cell.position = matrix_top_pos
 			one_x_n_matrix.append([cell])
 	var cell_matrix: Array = []
-	for i in range(0, dimensions.y):
+	for i in range(0, board_dimensions.first_element):
 		cell_matrix.append(one_x_n_matrix[i])
 # warning-ignore:unused_variable
-		for j in range(1, dimensions.x):
+		for j in range(1, board_dimensions.second_element):
 			cell = cell_scene.instance()
 			self.cells_node.add_child(cell)
 			cell.cell_size = cell_size
@@ -69,44 +72,44 @@ func create_matrix(matrix_top_pos: Vector2, dimensions: Vector2,
 			cell_matrix[i].append(cell)
 	return cell_matrix
 
-func organize_on_cells(flag: bool, matrix_size: Vector2,
+func organize_on_cells(flag: bool, board_dimensions: Tuple,
  on_cell: Texture) -> void:
 	var i = 0
 	var j = 0
 	var pattern = flag
-	while i < matrix_size.y:
+	while i < board_dimensions.first_element:
 		if pattern:
 			j = 0
 		else:
 			j = 1
-		while j < matrix_size.x:
+		while j < board_dimensions.second_element:
 			self.matrix_of_cells[i][j].texture = on_cell
 			self.matrix_of_cells[i][j].scale_cell()
 			j += 2
 		pattern = not pattern
 		i += 1
 
-func organize_off_cells(flag: bool,matrix_size: Vector2,
+func organize_off_cells(flag: bool, board_dimensions: Tuple,
  off_cell: Texture) -> void:
 	var i = 0
 	var j = 0
 	var pattern = flag
-	while i < matrix_size.y:
+	while i < board_dimensions.first_element:
 		if pattern:
 			j = 1
 		else:
 			j = 0
-		while j < matrix_size.x:
+		while j < board_dimensions.second_element:
 			self.matrix_of_cells[i][j].texture = off_cell
 			self.matrix_of_cells[i][j].scale_cell()
 			j += 2
 		pattern = not pattern
 		i += 1
 
-func organize_matrix_of_cells(flag: bool, matrix_size: Vector2, 
+func organize_matrix_of_cells(flag: bool, board_dimensions: Tuple, 
 on_cell: Texture, off_cell: Texture) -> void:
-	self.organize_on_cells(flag, matrix_size, on_cell)
-	self.organize_off_cells(flag, matrix_size, off_cell)
+	self.organize_on_cells(flag, board_dimensions, on_cell)
+	self.organize_off_cells(flag, board_dimensions, off_cell)
 
 func board_created() -> void:
 	for element in self.get_tree().get_nodes_in_group("board_listener"):

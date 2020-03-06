@@ -42,7 +42,8 @@ func place_explosions(explosions_coordinates: Array) -> void:
 
 func explode() -> void:
 	var explosion_coordinates: Array = $CrossExplosion.explode(
-		board_coordinates, self.game_board.matrix_of_cells)
+		board_coordinates, self.game_board.matrix_of_cells,
+		self.game_board.dimensions)
 	self.create_explosions(explosion_coordinates.size())
 	self.place_explosions(explosion_coordinates)
 

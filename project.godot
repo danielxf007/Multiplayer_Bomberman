@@ -70,11 +70,6 @@ _global_script_classes=[ {
 "path": "res://game_objects/chest/life_chest/life_chest.gd"
 }, {
 "base": "Node",
-"class": "Machine",
-"language": "GDScript",
-"path": "res://util/stateMachine.gd"
-}, {
-"base": "Node",
 "class": "ObjectPlacer",
 "language": "GDScript",
 "path": "res://board/object_placer/object_placer.gd"
@@ -83,11 +78,6 @@ _global_script_classes=[ {
 "class": "Obstacle",
 "language": "GDScript",
 "path": "res://game_objects/obstacle/obstacle.gd"
-}, {
-"base": "Node",
-"class": "State",
-"language": "GDScript",
-"path": "res://util/state.gd"
 }, {
 "base": "Node",
 "class": "Tuple",
@@ -112,10 +102,8 @@ _global_script_class_icons={
 "ExplosionF": "",
 "ExplosionMaker": "",
 "LifeChest": "",
-"Machine": "",
 "ObjectPlacer": "",
 "Obstacle": "",
-"State": "",
 "Tuple": "",
 "UtilFunctions": ""
 }
