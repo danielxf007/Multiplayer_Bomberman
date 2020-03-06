@@ -40,6 +40,8 @@ func place_obstacle() -> void:
 	var obstacle
 	obstacle = self.obstacle_packed_scene.instance()
 	self.game_board.get_node("rocks").add_child(obstacle)
+	obstacle.dimensions = self.cell.dimensions
+	obstacle.scale_rock()
 	obstacle.global_position = self.cell.global_position
 	self.cell.element = obstacle
 	obstacle.cell = self.cell
@@ -47,6 +49,8 @@ func place_obstacle() -> void:
 func place_chest(chest_packed_scene: PackedScene) -> void:
 	var chest: Chest = chest_packed_scene.instance()
 	self.game_board.get_node("Chests").add_child(chest)
+	chest.dimensions = self.cell.dimensions
+	chest.scale_chest()
 	chest.global_position = self.cell.global_position
 
 func place_obstacle_and_chest() -> void:
