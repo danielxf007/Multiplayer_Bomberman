@@ -1,7 +1,8 @@
-extends Node
+extends Node2D
 signal board_created(board)
 class_name Board
-
+const CELL_X_DIM: float = 48.0
+const CELL_Y_DIM: float = 48.0
 export(Vector2) var board_top_pos: Vector2 = Vector2()
 export(Texture) var ON_CELL
 export(Texture) var OFF_CELL
@@ -18,12 +19,10 @@ var walls: Node2D
 func _ready():
 	self.dimensions = Tuple.new(self.NUMBER_OF_CELLS_ROWS,
 	 self.NUMBER_OF_CELLS_COLUMNS)
+	var window_size: Vector2 = self.get_viewport().size
 	self.cells_node = $Cells
 	self.walls = $walls
-	var window: Viewport = self.get_parent().get_viewport()
-	var window_size: Vector2 = window.size
-	self.cell_dim = Tuple.new(window_size.x/self.NUMBER_OF_CELLS_COLUMNS,
-	window_size.y/self.NUMBER_OF_CELLS_ROWS)
+	self.cell_dim = Tuple.new(self.CELL_X_DIM, self.CELL_Y_DIM)
 	self.board_top_pos.x = self.cell_dim.first_element/2
 	self.board_top_pos.y = self.cell_dim.second_element/2
 # warning-ignore:narrowing_conversion
@@ -75,6 +74,7 @@ func organize_on_cells(flag: bool, board_dimensions: Tuple,
 			j = 1
 		while j < board_dimensions.second_element:
 			self.matrix_of_cells[i][j].texture = on_cell
+			self.matrix_of_cells[i][j].scale_cell()
 			j += 2
 		pattern = not pattern
 		i += 1
@@ -91,6 +91,7 @@ func organize_off_cells(flag: bool, board_dimensions: Tuple,
 			j = 0
 		while j < board_dimensions.second_element:
 			self.matrix_of_cells[i][j].texture = off_cell
+			self.matrix_of_cells[i][j].scale_cell()
 			j += 2
 		pattern = not pattern
 		i += 1
@@ -106,7 +107,6 @@ func create_row_of_walls(starting_point: Vector2, n_rows: int,
 	self.walls.add_child(wall)
 	wall.dimensions = cell_dimensions
 	wall.global_position = starting_point
-	wall.scale_wall()
 	var wall_row: Array = [wall]
 	var before_wall: Wall
 	for i in range(1, n_rows):
@@ -117,7 +117,6 @@ func create_row_of_walls(starting_point: Vector2, n_rows: int,
 		wall.global_position.x = before_wall.global_position.x
 		wall.global_position.y = (cell_dimensions.second_element +
 		 before_wall.global_position.y)
-		wall.scale_wall()
 		wall_row.append(wall)
 
 func create_column_of_walls(starting_point: Vector2, n_columns: int,
@@ -126,7 +125,6 @@ func create_column_of_walls(starting_point: Vector2, n_columns: int,
 	self.walls.add_child(wall)
 	wall.dimensions = cell_dimensions
 	wall.global_position = starting_point
-	wall.scale_wall()
 	var wall_column: Array = [wall]
 	var before_wall: Wall
 	for j in range(1, n_columns):
@@ -137,7 +135,6 @@ func create_column_of_walls(starting_point: Vector2, n_columns: int,
 		wall.global_position.x = (cell_dimensions.first_element +
 		 before_wall.global_position.x)
 		wall.global_position.y = before_wall.global_position.y
-		wall.scale_wall()
 		wall_column.append(wall)
 
 func organize_surroundings(wall_packed_scene: PackedScene) -> void:
