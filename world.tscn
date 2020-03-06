@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://board/board.gd" type="Script" id=1]
-[ext_resource path="res://rock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://score.gd" type="Script" id=3]
 [ext_resource path="res://montserrat.otf" type="DynamicFontData" id=4]
 [ext_resource path="res://board/object_placer/ObjectPlacer.tscn" type="PackedScene" id=5]
@@ -28,66 +27,6 @@ position = Vector2( 0, -1 )
 [node name="Chests" type="Node2D" parent="."]
 
 [node name="rocks" type="Node2D" parent="."]
-
-[node name="rock" parent="rocks" instance=ExtResource( 2 )]
-position = Vector2( 72, 24 )
-
-[node name="rock11" parent="rocks" instance=ExtResource( 2 )]
-position = Vector2( 72, 600 )
-
-[node name="rock2" parent="rocks" instance=ExtResource( 2 )]
-position = Vector2( 168, 24 )
-
-[node name="rock12" parent="rocks" instance=ExtResource( 2 )]
-position = Vector2( 168, 600 )
-
-[node name="rock3" parent="rocks" instance=ExtResource( 2 )]
-position = Vector2( 264, 24 )
-
-[node name="rock13" parent="rocks" instance=ExtResource( 2 )]
-position = Vector2( 264, 600 )
-
-[node name="rock4" parent="rocks" instance=ExtResource( 2 )]
-position = Vector2( 360, 24 )
-
-[node name="rock14" parent="rocks" instance=ExtResource( 2 )]
-position = Vector2( 360, 600 )
-
-[node name="rock5" parent="rocks" instance=ExtResource( 2 )]
-position = Vector2( 456, 24 )
-
-[node name="rock15" parent="rocks" instance=ExtResource( 2 )]
-position = Vector2( 456, 600 )
-
-[node name="rock6" parent="rocks" instance=ExtResource( 2 )]
-position = Vector2( 552, 24 )
-
-[node name="rock16" parent="rocks" instance=ExtResource( 2 )]
-position = Vector2( 552, 600 )
-
-[node name="rock7" parent="rocks" instance=ExtResource( 2 )]
-position = Vector2( 648, 24 )
-
-[node name="rock17" parent="rocks" instance=ExtResource( 2 )]
-position = Vector2( 648, 600 )
-
-[node name="rock8" parent="rocks" instance=ExtResource( 2 )]
-position = Vector2( 744, 24 )
-
-[node name="rock18" parent="rocks" instance=ExtResource( 2 )]
-position = Vector2( 744, 600 )
-
-[node name="rock9" parent="rocks" instance=ExtResource( 2 )]
-position = Vector2( 840, 24 )
-
-[node name="rock19" parent="rocks" instance=ExtResource( 2 )]
-position = Vector2( 840, 600 )
-
-[node name="rock10" parent="rocks" instance=ExtResource( 2 )]
-position = Vector2( 936, 24 )
-
-[node name="rock20" parent="rocks" instance=ExtResource( 2 )]
-position = Vector2( 936, 600 )
 
 [node name="spawn_points" type="Node2D" parent="."]
 
@@ -142,8 +81,4 @@ size_flags_horizontal = 2
 size_flags_vertical = 2
 custom_fonts/font = SubResource( 1 )
 text = "EXIT GAME"
-
-[node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2( 528, 311 )
-current = true
 [connection signal="pressed" from="winner/exit_game" to="score" method="_on_exit_game_pressed"]
