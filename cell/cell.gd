@@ -4,7 +4,7 @@ class_name Cell
 
 var element
 var cell_size: Vector2
-var cell_container_size: Vector2
+var dimensions: Tuple
 
 func set_element(new_element) -> void:
 	if not self.element:
@@ -15,3 +15,8 @@ func clear_element() -> void:
 
 func is_occupied() -> bool:
 	return self.element != null
+
+func scale_cell() -> void:
+	var texture_dim: Vector2 = self.texture.get_size()
+	self.scale.x=self.dimensions.first_element/texture_dim.x
+	self.scale.y=self.dimensions.second_element/texture_dim.y

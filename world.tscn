@@ -17,7 +17,6 @@ font_data = ExtResource( 4 )
 script = ExtResource( 1 )
 cell_dimensions = Vector2( 48, 48 )
 board_top_pos = Vector2( 24, 24 )
-CELL_CONTAINER_SIZE = Vector2( 12, 12 )
 ON_CELL = ExtResource( 7 )
 OFF_CELL = ExtResource( 6 )
 

@@ -99,6 +99,5 @@ func _ready():
 
 func _on_Board_board_created(board: Board) -> void:
 	self.game_board = board
-	var cell_dim: Vector2 = self.game_board.cell_dimensions
 	self.coordinates_conversor = CoordinatesConversor.new(
-		Tuple.new(cell_dim.x, cell_dim.y))
+		self.game_board.cell_dim)
