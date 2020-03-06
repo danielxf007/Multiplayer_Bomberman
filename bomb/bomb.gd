@@ -1,17 +1,21 @@
 extends StaticBody2D
 class_name Bomb
 
+const VERTICAL_FRAMES: int = 4
 export(int) var TYPE: int = 1
 var board_coordinates: Tuple
 var explosion_packed_scene: PackedScene = preload("res://explosion/Explosion.tscn")
 var game_board: Board
 var explosions: Array = []
 var from_player
+var dimensions: Tuple
 
 func _ready():
 	$AnimationPlayer.play("placed_bomb")
 	$PlacedBombTimer.start()
 	$ExplosionTime.start()
+	self.dimensions = self.game_board.cell_dim
+	self.scale_bomb()
 
 func _on_PlacedBombTimer_timeout():
 	self.bomb_explosion()
@@ -53,3 +57,9 @@ func bomb_explosion() -> void:
 
 func _on_ExplosionTime_timeout():
 	self.queue_free()
+
+func scale_bomb() -> void:
+	var texture_dim: Vector2 = $Sprite.texture.get_size()
+	texture_dim.x/= self.VERTICAL_FRAMES
+	self.scale.x=self.dimensions.first_element/texture_dim.x
+	self.scale.y=self.dimensions.second_element/texture_dim.y
