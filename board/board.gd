@@ -22,6 +22,8 @@ func _ready():
 	var window_size: Vector2 = window.size
 	self.cell_dim = Tuple.new(window_size.x/self.NUMBER_OF_CELLS_COLUMNS,
 	window_size.y/self.NUMBER_OF_CELLS_ROWS)
+	self.board_top_pos.x = self.cell_dim.first_element/2
+	self.board_top_pos.y = self.cell_dim.second_element/2
 	self.matrix_of_cells = self.create_matrix(self.board_top_pos,
 	self.dimensions, preload("res://cell/Cell.tscn"))
 	self.organize_matrix_of_cells(self.PATTERN_ON_OFF, 
