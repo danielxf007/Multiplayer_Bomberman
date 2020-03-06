@@ -8,6 +8,8 @@ export(Vector2) var CELL_CONTAINER_SIZE: Vector2 = Vector2()
 export(Texture) var ON_CELL
 export(Texture) var OFF_CELL
 export(bool) var PATTERN_ON_OFF = true
+export(float) var NUMBER_OF_CELLS: float = 100.0
+var cell_dim: Tuple 
 var cells_node
 var window: Viewport
 var matrix: Rect2
@@ -18,6 +20,7 @@ var matrix_of_cells: Array
 func _ready():
 	self.cells_node = $Cells
 	self.window = self.get_parent().get_viewport()
+	var window_size: Vector2 = self.window.size
 	self.board_size = Vector2(floor(self.window.size.x/self.cell_dimensions.x),
 	floor(self.window.size.y/ self.cell_dimensions.y))
 	self.matrix_of_cells = self.create_matrix(self.board_top_pos,
@@ -25,6 +28,10 @@ func _ready():
 	preload("res://cell/Cell.tscn"))
 	self.organize_matrix_of_cells(self.PATTERN_ON_OFF, 
 	self.board_size, self.ON_CELL, self.OFF_CELL)
+	self.cell_dim = Tuple.new(window_size.x/self.NUMBER_OF_CELLS,
+	window_size.y/self.NUMBER_OF_CELLS)
+	print(self.cell_dim.first_element)
+	print(self.cell_dim.second_element)
 
 
 func create_matrix(matrix_top_pos: Vector2, dimensions: Vector2,
