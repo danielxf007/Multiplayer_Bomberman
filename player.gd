@@ -51,7 +51,13 @@ func _physics_process(_delta):
 				else:
 					rset("bomb_type", self.MAX_BOMB_TYPE)
 				self.target_chest.open_chest()
-				self.target_chest = null
+			else:
+				rset("lifes", self.lifes + self.target_chest.content)
+				get_node("../../score").rpc("increase_life", self.target_chest.content,
+				 int(self.name))
+				self.target_chest.open_chest()
+			self.target_chest = null
+
 		var bombing = Input.is_action_pressed("set_bomb")
 		if stunned:
 			bombing = false
