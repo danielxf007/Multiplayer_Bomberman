@@ -17,22 +17,22 @@ func _process(_delta):
 		get_node("../winner").set_text("THE WINNER IS:\n" + winner_name)
 		get_node("../winner").show()
 
-sync func increase_score(amount, for_who):
-	assert(for_who in player_labels)
-	var pl = player_labels[for_who]
-	pl.score += amount
-	pl.label.set_text(pl.name + "\n" + str(pl.score))
-
-sync func decrease_score(amount, to_who):
+sync func increase_life(amount, to_who):
 	assert(to_who in player_labels)
 	var pl = player_labels[to_who]
-	pl.score -= amount
-	pl.label.set_text(pl.name + "\n" + str(pl.score))
+	pl.lifes += amount
+	pl.label.set_text(pl.name + "\n" + "Lifes: " + str(pl.lifes))
+
+sync func decrease_life(amount, to_who):
+	assert(to_who in player_labels)
+	var pl = player_labels[to_who]
+	pl.lifes -= amount
+	pl.label.set_text(pl.name + "\n" + "Lifes: " + str(pl.lifes))
 
 func add_player(id, new_player_name):
 	var l = Label.new()
 	l.set_align(Label.ALIGN_CENTER)
-	l.set_text(new_player_name + "\n" + "0")
+	l.set_text(new_player_name + "\n" + "Lifes: "+ "3")
 	l.set_h_size_flags(SIZE_EXPAND_FILL)
 	var font = DynamicFont.new()
 	font.set_size(18)
@@ -40,7 +40,7 @@ func add_player(id, new_player_name):
 	l.add_font_override("font", font)
 	add_child(l)
 
-	player_labels[id] = { name = new_player_name, label = l, score = 0 }
+	player_labels[id] = { name = new_player_name, label = l, lifes = 3 }
 
 func _ready():
 	get_node("../winner").hide()

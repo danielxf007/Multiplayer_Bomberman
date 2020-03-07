@@ -1,4 +1,5 @@
 extends StaticBody2D
+signal bomb_typed
 class_name Bomb
 
 const VERTICAL_FRAMES: int = 4
@@ -16,6 +17,7 @@ func _ready():
 	$ExplosionTime.start()
 	self.dimensions = self.game_board.cell_dim
 	self.scale_bomb()
+	self.emit_signal("bomb_typed", self.TYPE)
 
 func _on_PlacedBombTimer_timeout():
 	self.bomb_explosion()

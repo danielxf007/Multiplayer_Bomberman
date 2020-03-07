@@ -10,7 +10,7 @@ export(int ) var MIN_HEALTH: int = 1
 
 func _ready():
 	self.content = randi() % (self.MAX_HEALTH+1) + self.MIN_HEALTH
-	self.chest_name = "LifeChest"
+	self.chest_type = "Life"
 
 func scale_chest() -> void:
 	var texture_dim: Vector2 = self.texture.get_size()

@@ -9,7 +9,7 @@ export(int ) var MIN_BOOST: int = 1
 
 func _ready():
 	self.content = randi() % (self.MAX_BOOST+1) + self.MIN_BOOST
-	self.chest_name = "BombBoosterChest"
+	self.chest_type= "Booster"
 
 func scale_chest() -> void:
 	var texture_dim: Vector2 = self.texture.get_size()

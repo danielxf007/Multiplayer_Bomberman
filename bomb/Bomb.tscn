@@ -54,5 +54,6 @@ LEFT_RANGE = 2
 RIGHT_RANGE = 2
 UP_RANGE = 2
 DOWN_RANGE = 2
+[connection signal="bomb_typed" from="." to="CrossExplosion" method="_on_Bomb_bomb_typed"]
 [connection signal="timeout" from="PlacedBombTimer" to="." method="_on_PlacedBombTimer_timeout"]
 [connection signal="timeout" from="ExplosionTime" to="." method="_on_ExplosionTime_timeout"]
