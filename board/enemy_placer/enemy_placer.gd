@@ -25,11 +25,11 @@ dynamic_range_size: int, movement_v: Vector2, ghost_scene: PackedScene,
 type: bool) -> void:
 	var flag: bool = true
 	var i = 1
-	while(i < static_range_size-1):
-		var j: int = randi() % dynamic_range_size
-		var cell: Cell 
+	var j = 1
+	var cell: Cell
+	while i < static_range_size-1:
 		if type:
-			cell = matrix_of_cells[i][j]
+			cell = matrix_of_cells[i][i]
 		else:
 			cell = matrix_of_cells[j][i]
 		var ghost: Ghost = ghost_scene.instance()
@@ -41,4 +41,6 @@ type: bool) -> void:
 			ghost.movement_v = movement_v*-1
 		flag = not flag
 		self.game_board.get_node("enemies").add_child(ghost)
+		j += 1
+		j %= dynamic_range_size
 		i += 1
