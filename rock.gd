@@ -12,8 +12,3 @@ sync func do_explosion():
 
 master func exploded():
 	rpc("do_explosion") # Re-sent to puppet rocks
-
-func scale_rock() -> void:
-	var texture_dim: Vector2 = $sprite.texture.get_size()
-	self.scale.x=self.dimensions.first_element/texture_dim.x
-	self.scale.y=self.dimensions.second_element/texture_dim.y

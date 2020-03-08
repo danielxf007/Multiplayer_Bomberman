@@ -41,7 +41,6 @@ func place_obstacle() -> void:
 	obstacle = self.obstacle_packed_scene.instance()
 	self.game_board.get_node("rocks").add_child(obstacle)
 	obstacle.dimensions = self.cell.dimensions
-	obstacle.scale_rock()
 	obstacle.global_position = self.cell.global_position
 	self.cell.element = obstacle
 	obstacle.cell = self.cell
