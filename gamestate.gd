@@ -98,9 +98,9 @@ remote func pre_start_game(spawn_points):
 		post_start_game()
 
 remote func post_start_game():
-	get_tree().set_pause(false) # Unpause and unleash the game!
 	self.world.board_created()
 	self.world.get_node("ObjectPlacer").init()
+	get_tree().set_pause(false) # Unpause and unleash the game!
 
 var players_ready = []
 
