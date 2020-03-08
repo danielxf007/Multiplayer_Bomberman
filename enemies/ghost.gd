@@ -3,8 +3,8 @@ extends Node2D
 class_name Ghost
 
 const SPEED: float = 90.0
-puppet var movements: Array
-puppet var puppet_pos = Vector2()
+sync var movements: Array
+sync var puppet_pos = Vector2()
 var right_ray: RayCast2D
 var left_ray: RayCast2D
 var up_ray: RayCast2D
@@ -56,10 +56,7 @@ func next_movement() -> void:
 	self.target_cell = null
 
 func _physics_process(delta):
-		if is_network_master():
-			pass
-		else:
-			global_position = puppet_pos
+	if is_network_master():
 		if self.movements:
 			if self.target_cell:
 				self.global_position += self.movements[0]*self.SPEED*delta
@@ -76,5 +73,5 @@ func _physics_process(delta):
 					self.next_movement()
 		else:
 			self.choose_movements()
-		if not is_network_master():
-			puppet_pos = global_position # To avoid jitter
+	else:
+		self.global_position = puppet_pos
