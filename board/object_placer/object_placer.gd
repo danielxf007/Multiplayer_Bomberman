@@ -21,15 +21,15 @@ func _on_Board_board_created(board):
 
 func organize_obstacle_cells(flag: bool, board_dimensions: Tuple) -> void:
 	var i = 1
-	var j = 0
+	var j = 1
 	var pattern = flag
 	var matrix_of_cells: Array = self.game_board.matrix_of_cells
 	while i < board_dimensions.first_element-1:
 		if pattern:
-			j = 0
+			j = 2
 		else:
 			j = 1
-		while j < board_dimensions.second_element:
+		while j < board_dimensions.second_element-1:
 			self.cell = matrix_of_cells[i][j]
 			self.place_object()
 			j += 2

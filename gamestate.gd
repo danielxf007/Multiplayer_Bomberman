@@ -11,6 +11,8 @@ var player_name = "The Warrior"
 var world
 # Names for remote players in id:name format
 var players = {}
+var positions: Array = [Vector2(24.0, 24.0)]
+var players_in_game: Array = []
 # Signals to let lobby GUI know what's going on
 signal player_list_changed()
 signal connection_failed()
@@ -69,11 +71,11 @@ remote func pre_start_game(spawn_points):
 	var player_scene = load("res://player.tscn")
 
 	for p_id in spawn_points:
-		var spawn_pos = world.get_node("spawn_points/" + str(spawn_points[p_id])).global_position
 		var player = player_scene.instance()
 
 		player.set_name(str(p_id)) # Use unique ID as node name
-		player.global_position=spawn_pos
+		player.global_position=self.positions[0]
+		player.starting_point = self.positions[0]
 		player.set_network_master(p_id) #set unique id as master
 
 		if p_id == get_tree().get_network_unique_id():
@@ -82,7 +84,7 @@ remote func pre_start_game(spawn_points):
 		else:
 			# Otherwise set name from peer
 			player.set_player_name(players[p_id])
-
+		self.players_in_game.append(player)
 		world.get_node("players").add_child(player)
 
 	# Set up score
@@ -100,7 +102,6 @@ remote func post_start_game():
 	get_tree().set_pause(false) # Unpause and unleash the game!
 	self.world.board_created()
 	self.world.get_node("ObjectPlacer").init()
-	
 
 var players_ready = []
 
@@ -157,6 +158,10 @@ func end_game():
 	emit_signal("game_ended")
 	players.clear()
 	get_tree().set_network_peer(null) # End networking
+
+func scale_players() -> void:
+	for player in self.players_in_game:
+		player.scale_player()
 
 func _ready():
 	get_tree().connect("network_peer_connected", self, "_player_connected")

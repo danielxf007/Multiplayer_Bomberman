@@ -24,7 +24,6 @@ OFF_CELL = ExtResource( 6 )
 [node name="ObjectPlacer" parent="." instance=ExtResource( 5 )]
 
 [node name="walls" type="Node2D" parent="."]
-position = Vector2( 0, -1 )
 
 [node name="Cells" type="Node2D" parent="."]
 
@@ -33,9 +32,6 @@ position = Vector2( 0, -1 )
 [node name="rocks" type="Node2D" parent="."]
 
 [node name="spawn_points" type="Node2D" parent="."]
-
-[node name="0" type="Position2D" parent="spawn_points"]
-position = Vector2( 24, 24 )
 
 [node name="1" type="Position2D" parent="spawn_points"]
 position = Vector2( 24, 600 )

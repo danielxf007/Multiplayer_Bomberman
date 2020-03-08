@@ -22,8 +22,8 @@ func _ready():
 	self.cells_node = $Cells
 	self.walls = $walls
 	self.cell_dim = Tuple.new(self.CELL_X_DIM, self.CELL_Y_DIM)
-	self.board_top_pos.x = self.cell_dim.first_element/2
-	self.board_top_pos.y = self.cell_dim.second_element/2
+	self.board_top_pos.x = self.cell_dim.first_element/2.0
+	self.board_top_pos.y = self.cell_dim.second_element/2.0
 # warning-ignore:narrowing_conversion
 # warning-ignore:narrowing_conversion
 	self.matrix_of_cells = self.create_matrix(self.board_top_pos,
@@ -33,7 +33,7 @@ func _ready():
 	self.dimensions, self.ON_CELL, self.OFF_CELL)
 	self.organize_surroundings(preload("res://wall/Wall.tscn"))
 
-func create_column_cells(starting_point: Vector2, n_cells: int,
+func create_column_cells(starting_point: Vector2, n_cells: float,
  cell_dimensions: Tuple, cell_packed_scene: PackedScene) -> Array:
 	var cell: Cell = cell_packed_scene.instance()
 	self.cells_node.add_child(cell)
@@ -52,7 +52,7 @@ func create_column_cells(starting_point: Vector2, n_cells: int,
 			cell_column.append(cell)
 	return cell_column
 
-func create_matrix(matrix_top_pos: Vector2, n_rows: int, n_columns: int,
+func create_matrix(matrix_top_pos: Vector2, n_rows: float, n_columns: float,
 cell_dimensions: Tuple, cell_scene: PackedScene) -> Array:
 	var matrix: Array = []
 	for _i in range(0, n_rows):
@@ -100,7 +100,7 @@ on_cell: Texture, off_cell: Texture) -> void:
 	self.organize_on_cells(flag, board_dimensions, on_cell)
 	self.organize_off_cells(flag, board_dimensions, off_cell)
 
-func create_row_of_walls(starting_point: Vector2, n_rows: int,
+func create_row_of_walls(starting_point: Vector2, n_rows: float,
  cell_dimensions: Tuple, wall_packed_scene: PackedScene) -> void:
 	var wall: Wall = wall_packed_scene.instance()
 	self.walls.add_child(wall)
@@ -118,7 +118,7 @@ func create_row_of_walls(starting_point: Vector2, n_rows: int,
 		 before_wall.global_position.y)
 		wall_row.append(wall)
 
-func create_column_of_walls(starting_point: Vector2, n_columns: int,
+func create_column_of_walls(starting_point: Vector2, n_columns: float,
  cell_dimensions: Tuple, wall_packed_scene: PackedScene) -> void:
 	var wall: Wall = wall_packed_scene.instance()
 	self.walls.add_child(wall)
@@ -137,19 +137,15 @@ func create_column_of_walls(starting_point: Vector2, n_columns: int,
 		wall_column.append(wall)
 
 func organize_surroundings(wall_packed_scene: PackedScene) -> void:
-# warning-ignore:narrowing_conversion
 	self.create_row_of_walls(Vector2(-self.board_top_pos.x, self.board_top_pos.y),
 	self.NUMBER_OF_CELLS_ROWS, self.cell_dim, wall_packed_scene)
-# warning-ignore:narrowing_conversion
 	self.create_row_of_walls(Vector2(
 	self.board_top_pos.x+self.cell_dim.first_element*(
 	self.NUMBER_OF_CELLS_COLUMNS), self.board_top_pos.y),
 	self.NUMBER_OF_CELLS_ROWS, self.cell_dim, wall_packed_scene)
-# warning-ignore:narrowing_conversion
 	self.create_column_of_walls(Vector2(self.board_top_pos.x,
 	-self.board_top_pos.y), self.NUMBER_OF_CELLS_COLUMNS, self.cell_dim,
 	wall_packed_scene)
-# warning-ignore:narrowing_conversion
 	self.create_column_of_walls(Vector2(self.board_top_pos.x,
 	self.board_top_pos.y+self.cell_dim.second_element*(
 	self.NUMBER_OF_CELLS_ROWS)),self.NUMBER_OF_CELLS_COLUMNS,
