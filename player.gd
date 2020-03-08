@@ -4,7 +4,6 @@ const MOTION_SPEED = 90.0
 const VERTICAL_FRAMES: float = 4.0
 const HORIZONTAL_FRAMES: float = 4.0
 const MAX_BOMB_TYPE: int = 20
-var starting_point: Vector2
 puppet var puppet_pos = Vector2()
 puppet var puppet_motion = Vector2()
 sync var lifes: int = 4
@@ -115,7 +114,6 @@ func set_player_name(new_name):
 func _ready():
 	stunned = false
 	puppet_pos = position
-	print(puppet_pos)
 
 func _on_Board_board_created(board: Board) -> void:
 	self.game_board = board

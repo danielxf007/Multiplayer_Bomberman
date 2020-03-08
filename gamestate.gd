@@ -11,7 +11,7 @@ var player_name = "The Warrior"
 var world
 # Names for remote players in id:name format
 var players = {}
-var positions: Array = [Vector2(24.0, 24.0)]
+var positions: Array = [Vector2(24.0, 600.0)]
 var players_in_game: Array = []
 # Signals to let lobby GUI know what's going on
 signal player_list_changed()
@@ -75,7 +75,6 @@ remote func pre_start_game(spawn_points):
 
 		player.set_name(str(p_id)) # Use unique ID as node name
 		player.global_position=self.positions[0]
-		player.starting_point = self.positions[0]
 		player.set_network_master(p_id) #set unique id as master
 
 		if p_id == get_tree().get_network_unique_id():
