@@ -81,35 +81,30 @@ text = "EXIT GAME"
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Right2" type="TouchScreenButton" parent="CanvasLayer"]
-modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 960, 435 )
-scale = Vector2( 1.5, 3 )
+scale = Vector2( 1.5, 1.84899 )
 normal = ExtResource( 10 )
 action = "move_right"
 
 [node name="Left" type="TouchScreenButton" parent="CanvasLayer"]
-self_modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, 435 )
-scale = Vector2( 1.5, 3 )
+scale = Vector2( 1.5, 1.84594 )
 normal = ExtResource( 2 )
 action = "move_left"
 
 [node name="Up" type="TouchScreenButton" parent="CanvasLayer"]
-self_modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 90, 335 )
 scale = Vector2( 1.5, 1.5 )
 normal = ExtResource( 8 )
 action = "move_up"
 
 [node name="Up2" type="TouchScreenButton" parent="CanvasLayer"]
-self_modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 850, 335 )
 scale = Vector2( 1.5, 1.5 )
 normal = ExtResource( 8 )
 action = "move_up"
 
 [node name="Down" type="TouchScreenButton" parent="CanvasLayer"]
-self_modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 185, 634 )
 rotation = -3.14159
 scale = Vector2( 1.5, 1.5 )
@@ -117,7 +112,6 @@ normal = ExtResource( 8 )
 action = "move_down"
 
 [node name="Down2" type="TouchScreenButton" parent="CanvasLayer"]
-self_modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 950, 634 )
 rotation = -3.14159
 scale = Vector2( 1.5, 1.5 )
