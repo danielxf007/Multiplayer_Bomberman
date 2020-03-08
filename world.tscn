@@ -31,17 +31,6 @@ OFF_CELL = ExtResource( 6 )
 
 [node name="rocks" type="Node2D" parent="."]
 
-[node name="spawn_points" type="Node2D" parent="."]
-
-[node name="1" type="Position2D" parent="spawn_points"]
-position = Vector2( 24, 600 )
-
-[node name="2" type="Position2D" parent="spawn_points"]
-position = Vector2( 1032, 24 )
-
-[node name="3" type="Position2D" parent="spawn_points"]
-position = Vector2( 1032, 600 )
-
 [node name="players" type="Node2D" parent="."]
 
 [node name="score" type="HBoxContainer" parent="."]
