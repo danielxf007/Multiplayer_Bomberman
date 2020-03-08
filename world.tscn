@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://board/board.gd" type="Script" id=1]
 [ext_resource path="res://art/osb_left.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://art/osb_jump.png" type="Texture" id=8]
 [ext_resource path="res://art/osb_fire.png" type="Texture" id=9]
 [ext_resource path="res://art/osb_right.png" type="Texture" id=10]
+[ext_resource path="res://board/enemy_placer/EnemyPlacer.tscn" type="PackedScene" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 44
@@ -23,6 +24,10 @@ OFF_CELL = ExtResource( 6 )
 
 [node name="ObjectPlacer" parent="." instance=ExtResource( 5 )]
 
+[node name="EnemyPlacer" parent="." groups=[
+"board_listener",
+] instance=ExtResource( 11 )]
+
 [node name="walls" type="Node2D" parent="."]
 
 [node name="Cells" type="Node2D" parent="."]
@@ -30,6 +35,8 @@ OFF_CELL = ExtResource( 6 )
 [node name="Chests" type="Node2D" parent="."]
 
 [node name="rocks" type="Node2D" parent="."]
+
+[node name="enemies" type="Node2D" parent="."]
 
 [node name="players" type="Node2D" parent="."]
 

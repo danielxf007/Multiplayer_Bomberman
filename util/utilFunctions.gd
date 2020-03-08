@@ -18,10 +18,3 @@ func is_inside_matrix(matrix_dim: Tuple, coord: Tuple) -> bool:
 	return (self.number_in_range(0, matrix_dim.first_element-1,
 	 coord.first_element) and self.number_in_range(0,
 	 matrix_dim.second_element-1, coord.second_element))
-
-func is_inside_square(square_dim: Tuple, square_center: Vector2,
-point: Vector2) -> bool:
-	return (self.number_in_range(-square_dim.first_element/2.0,
-	 square_dim.first_element/2.0, point.x - square_center.x) and
-	self.number_in_range(-square_dim.second_element/2.0,
-	square_dim.second_element/2.0, point.y - square_center.y))

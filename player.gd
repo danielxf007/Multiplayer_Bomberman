@@ -13,12 +13,11 @@ var target_chest: Chest
 var game_board: Board
 var coordinates_conversor: CoordinatesConversor
 # Use sync because it will be called everywhere
-sync func setup_bomb(bomb_name, pos, by_who):
+sync func setup_bomb(bomb_name, pos):
 	#var bomb = preload("res://bomb.tscn").instance()
 	var bomb: Bomb = preload("res://bomb/Bomb.tscn").instance()
 	bomb.set_name(bomb_name) # Ensure unique name for the bomb
 	bomb.position = pos
-	bomb.from_player = by_who
 	bomb.add_collision_exception_with(self)
 	bomb.game_board = self.game_board
 	bomb.board_coordinates = self.coordinates_conversor.get_player_coordinates_on_board(
@@ -66,7 +65,7 @@ func _physics_process(_delta):
 		if bombing and not prev_bombing:
 			var bomb_name = get_name() + str(bomb_index)
 			var bomb_pos = position
-			rpc("setup_bomb", bomb_name, bomb_pos, get_tree().get_network_unique_id())
+			rpc("setup_bomb", bomb_name, bomb_pos)
 
 		prev_bombing = bombing
 

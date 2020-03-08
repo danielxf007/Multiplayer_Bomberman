@@ -9,8 +9,8 @@ sync func do_explosion():
 	if self.cell:
 		self.cell.clear_element()
 
-# Received by owner of the rock
-master func exploded(_by_who):
+
+master func exploded():
 	rpc("do_explosion") # Re-sent to puppet rocks
 
 func scale_rock() -> void:
