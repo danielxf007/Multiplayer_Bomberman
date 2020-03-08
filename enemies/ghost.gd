@@ -46,7 +46,10 @@ func is_in_cell(target: Tuple, ghost_pos: Vector2) -> bool:
 	ghost_pos)
 
 func valid_target_cell(target: Tuple) -> bool:
-	return false
+	return (self.util_f.number_in_range(0, 
+	int(self.game_board.NUMBER_OF_CELLS_ROWS)-1, target.first_element) and
+	self.util_f.number_in_range(0, 
+	int(self.game_board.NUMBER_OF_CELLS_COLUMNS)-1, target.first_element))
 
 func next_movement() -> void:
 	self.movements.pop_front()
