@@ -101,7 +101,7 @@ func _physics_process(_delta):
 puppet func stun():
 	stunned = true
 
-master func exploded(_by_who):
+master func exploded():
 	if stunned:
 		return
 	rpc("stun") # Stun puppets

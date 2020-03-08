@@ -19,7 +19,9 @@ func is_inside_matrix(matrix_dim: Tuple, coord: Tuple) -> bool:
 	 coord.first_element) and self.number_in_range(0,
 	 matrix_dim.second_element-1, coord.second_element))
 
-func is_inside_circle(circle_radius: float, center: Vector2,
- point_coord: Vector2) -> bool:
-	return (pow(point_coord.x-center.x, 2.0) + pow(point_coord.y-center.y, 2.0)<=
-	pow(circle_radius, 2.0))
+func is_inside_square(square_dim: Tuple, square_center: Vector2,
+point: Vector2) -> bool:
+	return (self.number_in_range(-square_dim.first_element/2.0,
+	 square_dim.first_element/2.0, point.x - square_center.x) and
+	self.number_in_range(-square_dim.second_element/2.0,
+	square_dim.second_element/2.0, point.y - square_center.y))

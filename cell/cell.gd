@@ -3,8 +3,8 @@ extends Sprite
 class_name Cell
 
 var element
-var cell_size: Vector2
 var dimensions: Tuple
+var container_dimensions: Tuple
 
 func set_element(new_element) -> void:
 	if not self.element:

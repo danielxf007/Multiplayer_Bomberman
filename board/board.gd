@@ -9,6 +9,7 @@ export(Texture) var OFF_CELL
 export(bool) var PATTERN_ON_OFF = true
 export(float) var NUMBER_OF_CELLS_COLUMNS: float = 22.0
 export(float) var NUMBER_OF_CELLS_ROWS: float = 13.0
+var cell_container_dim: Tuple
 var dimensions: Tuple
 var cell_dim: Tuple 
 var cells_node
@@ -19,6 +20,7 @@ var walls: Node2D
 func _ready():
 	self.dimensions = Tuple.new(self.NUMBER_OF_CELLS_ROWS,
 	 self.NUMBER_OF_CELLS_COLUMNS)
+	self.cell_container_dim = Tuple.new(12.0, 12.0)
 	self.cells_node = $Cells
 	self.walls = $walls
 	self.cell_dim = Tuple.new(self.CELL_X_DIM, self.CELL_Y_DIM)
@@ -43,6 +45,7 @@ func create_column_cells(starting_point: Vector2, n_cells: float,
 			cell = cell_packed_scene.instance()
 			self.cells_node.add_child(cell)
 			cell.dimensions = cell_dimensions
+			cell.container_dimensions = self.cell_container_dim
 			before_cell = cell_column[j-1]
 			cell.position.x = (before_cell.position.x +
 			before_cell.dimensions.first_element)

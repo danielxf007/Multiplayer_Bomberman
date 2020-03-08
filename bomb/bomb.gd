@@ -8,7 +8,6 @@ var board_coordinates: Tuple
 var explosion_packed_scene: PackedScene = preload("res://explosion/Explosion.tscn")
 var game_board: Board
 var explosions: Array = []
-var from_player
 var dimensions: Tuple
 
 func _ready():
@@ -16,7 +15,6 @@ func _ready():
 	$PlacedBombTimer.start()
 	$ExplosionTime.start()
 	self.dimensions = self.game_board.cell_dim
-	self.scale_bomb()
 	self.emit_signal("bomb_typed", self.TYPE)
 
 func _on_PlacedBombTimer_timeout():
@@ -27,7 +25,6 @@ func create_explosions(explosion_range_size: int) -> void:
 # warning-ignore:unused_variable
 	for i in range(0, explosion_range_size):
 		explosion = self.explosion_packed_scene.instance()
-		explosion.from_player = self.from_player
 		self.explosions.append(explosion)
 
 func place_explosions(explosions_coordinates: Array) -> void:
@@ -56,12 +53,5 @@ func explode() -> void:
 func bomb_explosion() -> void:
 	self.explode()
 
-
 func _on_ExplosionTime_timeout():
 	self.queue_free()
-
-func scale_bomb() -> void:
-	var texture_dim: Vector2 = $Sprite.texture.get_size()
-	texture_dim.x/= self.VERTICAL_FRAMES
-	self.scale.x=self.dimensions.first_element/texture_dim.x
-	self.scale.y=self.dimensions.second_element/texture_dim.y

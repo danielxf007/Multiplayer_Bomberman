@@ -49,6 +49,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://bomb/bomb_explosions/cross_explosion.gd"
 }, {
+"base": "Node",
+"class": "EnemyPlacer",
+"language": "GDScript",
+"path": "res://board/enemy_placer/enemy_placer.gd"
+}, {
 "base": "Sprite",
 "class": "Explosion",
 "language": "GDScript",
@@ -63,6 +68,11 @@ _global_script_classes=[ {
 "class": "ExplosionMaker",
 "language": "GDScript",
 "path": "res://explosion_maker/explosion_maker.gd"
+}, {
+"base": "Node2D",
+"class": "Ghost",
+"language": "GDScript",
+"path": "res://enemies/ghost.gd"
 }, {
 "base": "Sprite",
 "class": "LifeChest",
@@ -103,9 +113,11 @@ _global_script_class_icons={
 "Chest": "",
 "CoordinatesConversor": "",
 "CrossExplosion": "",
+"EnemyPlacer": "",
 "Explosion": "",
 "ExplosionF": "",
 "ExplosionMaker": "",
+"Ghost": "",
 "LifeChest": "",
 "ObjectPlacer": "",
 "Obstacle": "",
