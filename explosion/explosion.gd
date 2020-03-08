@@ -13,3 +13,10 @@ func _on_Area2D_body_entered(body):
 
 func _on_Timer_timeout():
 	self.queue_free()
+
+
+func _on_Area2D_area_entered(area):
+	if not is_network_master():
+		return
+	if area.has_method("exploded"):
+		area.rpc("exploded")

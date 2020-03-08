@@ -1,4 +1,4 @@
-extends Node2D
+extends Area2D
 
 class_name Ghost
 
@@ -56,3 +56,9 @@ func move_ghost() -> void:
 
 func _on_Timer_timeout():
 	self.move_ghost()
+
+sync func do_explosion():
+	self.queue_free()
+
+master func exploded():
+	rpc("do_explosion") # Re-sent to puppet rocks
