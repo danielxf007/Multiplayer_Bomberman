@@ -27,10 +27,10 @@ func _on_Area2D_body_entered(body):
 	if body.has_method("exploded"):
 		body.rpc("exploded")
 
-func choose_movement() -> Array:
-	return []
+func choose_movements() -> void:
+	pass
 
-func colliding() -> bool:
+func is_colliding() -> bool:
 	return (self.right_ray.is_colliding() or self.left_ray.is_colliding() or
 	self.up_ray.is_colliding() or self.down_ray.is_colliding())
 
@@ -40,10 +40,17 @@ func set_target_cell(movement: Vector2, current_matrix_pos: Tuple) -> void:
 	self.target_cell.second_element = (current_matrix_pos.second_element +
 	movement.y)
 
-func is_in_cell(ghost_indexes: Tuple, ghost_pos: Vector2) -> bool:
+func is_in_cell(target: Tuple, ghost_pos: Vector2) -> bool:
 	return self.util_f.is_inside_square(self.game_board.cell_container_dim,
-	self.game_board.matrix_of_cells[ghost_indexes.first_element][ghost_indexes.second_element],
+	self.game_board.matrix_of_cells[target.first_element][target.second_element],
 	ghost_pos)
+
+func valid_target_cell(target: Tuple) -> bool:
+	return false
+
+func next_movement() -> void:
+	self.movements.pop_front()
+	self.target_cell = null
 
 func _physics_process(delta):
 		if is_network_master():
@@ -53,6 +60,18 @@ func _physics_process(delta):
 		if self.movements:
 			if self.target_cell:
 				self.global_position += self.movements[0]*self.SPEED*delta
-				if not self.is_colli
+				if not self.is_colliding():
+					if self.is_in_cell(self.target_cell, self.global_position):
+						self.next_movement()
+				else:
+					self.next_movement()
+			else:
+				self.set_target_cell(self.movements[0], 
+				self.coordinate_conversor.get_player_coordinates_on_board(
+					self.global_position))
+				if not self.valid_target_cell(self.target_cell):
+					self.next_movement()
+		else:
+			self.choose_movements()
 		if not is_network_master():
 			puppet_pos = global_position # To avoid jitter
