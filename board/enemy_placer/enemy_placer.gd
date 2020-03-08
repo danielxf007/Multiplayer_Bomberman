@@ -41,4 +41,4 @@ type: bool) -> void:
 			ghost.movement_v = movement_v*-1
 		flag = not flag
 		self.game_board.get_node("enemies").add_child(ghost)
-		i += 2
+		i += 1

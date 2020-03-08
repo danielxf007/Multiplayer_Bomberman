@@ -18,10 +18,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -126.0
-margin_top = -177.5
-margin_right = 126.0
-margin_bottom = 177.5
+margin_left = -189.0
+margin_top = -177.0
+margin_right = 171.0
+margin_bottom = 238.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 
@@ -35,10 +35,10 @@ size_flags_vertical = 0
 text = "Awaiting Players..."
 
 [node name="start" type="Button" parent="players"]
-margin_left = 68.0
-margin_top = 307.0
-margin_right = 193.0
-margin_bottom = 336.0
+margin_left = 86.088
+margin_top = 328.103
+margin_right = 261.088
+margin_bottom = 401.103
 size_flags_horizontal = 2
 size_flags_vertical = 2
 text = "START!"
@@ -46,7 +46,7 @@ text = "START!"
 [node name="list" type="ItemList" parent="players"]
 margin_left = 25.0
 margin_top = 37.0
-margin_right = 229.0
+margin_right = 328.0
 margin_bottom = 296.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
@@ -56,65 +56,66 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -138.5
-margin_top = -83.5
-margin_right = 138.5
-margin_bottom = 83.5
+margin_left = -204.807
+margin_top = -135.565
+margin_right = 216.193
+margin_bottom = 131.435
 size_flags_horizontal = 2
 size_flags_vertical = 2
 
 [node name="name_label" type="Label" parent="connect"]
+anchor_right = 0.02
 margin_left = 14.0
 margin_top = 11.0
-margin_right = 56.0
-margin_bottom = 25.0
+margin_right = 90.0
+margin_bottom = 44.0
 size_flags_horizontal = 2
 size_flags_vertical = 0
 text = "Name:"
 
 [node name="name" type="LineEdit" parent="connect"]
-margin_left = 17.0
-margin_top = 30.0
-margin_right = 173.0
-margin_bottom = 54.0
+margin_left = 12.7895
+margin_top = 53.1579
+margin_right = 277.789
+margin_bottom = 106.158
 size_flags_horizontal = 2
 size_flags_vertical = 2
 text = "The Warrior"
 max_length = 20
 
 [node name="ip_label" type="Label" parent="connect"]
-margin_left = 15.0
-margin_top = 66.0
-margin_right = 57.0
-margin_bottom = 80.0
+margin_left = 29.7368
+margin_top = 161.79
+margin_right = 71.7368
+margin_bottom = 175.79
 size_flags_horizontal = 2
 size_flags_vertical = 0
 text = "IP:"
 
 [node name="ip" type="LineEdit" parent="connect"]
-margin_left = 17.0
-margin_top = 85.0
-margin_right = 173.0
-margin_bottom = 109.0
+margin_left = 19.8421
+margin_top = 184.684
+margin_right = 269.842
+margin_bottom = 238.684
 size_flags_horizontal = 2
 size_flags_vertical = 2
 text = "127.0.0.1"
 max_length = 20
 
 [node name="host" type="Button" parent="connect"]
-margin_left = 181.0
-margin_top = 31.0
-margin_right = 246.0
-margin_bottom = 51.0
+margin_left = 317.895
+margin_top = 56.3685
+margin_right = 382.895
+margin_bottom = 107.368
 size_flags_horizontal = 2
 size_flags_vertical = 2
 text = "Host"
 
 [node name="join" type="Button" parent="connect"]
-margin_left = 181.0
-margin_top = 87.0
-margin_right = 246.0
-margin_bottom = 107.0
+margin_left = 317.579
+margin_top = 181.737
+margin_right = 382.579
+margin_bottom = 239.737
 size_flags_horizontal = 2
 size_flags_vertical = 2
 text = "Join"
