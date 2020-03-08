@@ -2,7 +2,6 @@ extends Node2D
 
 class_name Ghost
 
-const SPEED: float = 90.0
 var movement_v: Vector2
 puppet var puppet_pos = Vector2()
 var movements_permu: Array
