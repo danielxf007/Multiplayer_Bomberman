@@ -6,7 +6,7 @@ const HORIZONTAL_FRAMES: float = 4.0
 const MAX_BOMB_TYPE: int = 20
 puppet var puppet_pos = Vector2()
 puppet var puppet_motion = Vector2()
-sync var lifes: int = 4
+sync var lifes: int = 3
 sync var bomb_type: int  = 1
 export var stunned = false
 var target_chest: Chest
@@ -106,6 +106,20 @@ master func exploded():
 	rpc("stun") # Stun puppets
 	stun() # Stun master - could use sync to do both at once
 	get_node("../../score").rpc("decrease_life", 1, int(self.name))
+	rset("lifes", self.lifes - 1)
+	if self.lifes == 0:
+		get_node("../../score").rpc("player_die", int(self.name))
+		if not self.is_network_master():
+			rpc("died")
+		else:
+			self.set_physics_process(false)
+			$shape.queue_free()
+			$sprite.visible = false
+			$label.text = ""
+
+puppet func died() -> void:
+	get_node("../../score").rpc("player_die", int(self.name))
+	self.queue_free()
 
 func set_player_name(new_name):
 	get_node("label").set_text(new_name)

@@ -3,18 +3,18 @@ extends HBoxContainer
 var player_labels = {}
 
 func _process(_delta):
-	var rocks_left = get_node("../rocks").get_child_count()
-	if false and rocks_left == 0:
+	var players_left = self.get_alive_players()
+	var enemies_left = get_node("../enemies").get_child_count()
+	if players_left.size() == 1 and enemies_left == 0:
 		var winner_name = ""
-		var winner_score = 0
-		for p in player_labels:
-			if player_labels[p].score > winner_score:
-				winner_score = player_labels[p].score
-				winner_name = player_labels[p].name
-		if winner_score == 0:
-			get_node("../winner").set_text("DRAW")
-			get_node("../winner").show()
+		winner_name = player_labels[players_left[0]].name
 		get_node("../winner").set_text("THE WINNER IS:\n" + winner_name)
+		get_node("../winner").show()
+	if players_left.size() == 0 and enemies_left > 0:
+		get_node("../winner").set_text("THE WINNER IS:\n" + "MACHINE")
+		get_node("../winner").show()
+	if players_left.size() == 0 and enemies_left == 0:
+		get_node("../winner").set_text("THE WINNER IS:\n" + "DRAW")
 		get_node("../winner").show()
 
 sync func increase_life(amount, to_who):
@@ -40,7 +40,20 @@ func add_player(id, new_player_name):
 	l.add_font_override("font", font)
 	add_child(l)
 
-	player_labels[id] = { name = new_player_name, label = l, lifes = 3 }
+	player_labels[id] = { name = new_player_name, label = l, lifes = 3 ,
+	alive = true}
+
+sync func player_die(who):
+	assert(who in player_labels)
+	var pl = player_labels[who]
+	pl.alive = false
+
+func get_alive_players() -> Array:
+	var alive_players: Array = []
+	for p in player_labels:
+		if player_labels[p].alive == true:
+			alive_players.append(p)
+	return alive_players
 
 func _ready():
 	get_node("../winner").hide()

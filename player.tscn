@@ -4,7 +4,7 @@
 [ext_resource path="res://charwalk.png" type="Texture" id=2]
 [ext_resource path="res://montserrat.otf" type="DynamicFontData" id=3]
 
-[sub_resource type="CircleShape2D" id=9]
+[sub_resource type="CircleShape2D" id=1]
 radius = 16.0
 
 [sub_resource type="Animation" id=2]
@@ -161,7 +161,7 @@ frame = 12
 
 [node name="shape" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 4 )
-shape = SubResource( 9 )
+shape = SubResource( 1 )
 
 [node name="anim" type="AnimationPlayer" parent="."]
 anims/standing = SubResource( 2 )
