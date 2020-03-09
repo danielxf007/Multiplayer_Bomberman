@@ -43,4 +43,4 @@ type: bool) -> void:
 		self.game_board.get_node("enemies").add_child(ghost)
 		j += 1
 		j %= dynamic_range_size
-		i += 1
+		i += 2

@@ -119,6 +119,9 @@ margin_bottom = 239.737
 size_flags_horizontal = 2
 size_flags_vertical = 2
 text = "Join"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="error_label" type="Label" parent="connect"]
 margin_left = 15.0

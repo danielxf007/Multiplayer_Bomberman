@@ -4,7 +4,7 @@ extends Node
 const DEFAULT_PORT = 10567
 
 # Max number of players
-const MAX_PEERS = 4
+const MAX_PEERS = 3
 
 # Name for my player
 var player_name = "The Warrior"
@@ -157,7 +157,8 @@ func end_game():
 
 	emit_signal("game_ended")
 	players.clear()
-	get_tree().set_network_peer(null) # End networking
+
+
 
 func _ready():
 	get_tree().connect("network_peer_connected", self, "_player_connected")
