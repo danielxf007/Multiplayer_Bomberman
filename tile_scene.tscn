@@ -13,6 +13,7 @@ texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 48, 48 )
 
 [node name="col" type="StaticBody2D" parent="wall"]
+collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wall/col"]
 shape = SubResource( 1 )

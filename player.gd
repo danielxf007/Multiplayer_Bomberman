@@ -115,11 +115,12 @@ master func exploded():
 			self.set_physics_process(false)
 			$shape.queue_free()
 			$sprite.visible = false
-			$label.text = ""
+
 
 puppet func died() -> void:
 	get_node("../../score").rpc("player_die", int(self.name))
 	self.queue_free()
+
 
 func set_player_name(new_name):
 	get_node("label").set_text(new_name)

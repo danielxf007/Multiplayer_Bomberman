@@ -61,3 +61,6 @@ func _ready():
 
 func _on_exit_game_pressed():
 	gamestate.end_game()
+
+func _on_play_again_pressed():
+	rpc("play_again")
