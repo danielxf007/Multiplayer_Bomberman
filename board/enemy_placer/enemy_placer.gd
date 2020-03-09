@@ -12,10 +12,6 @@ func init() -> void:
 	int(self.game_board.NUMBER_OF_CELLS_ROWS),
 	int(self.game_board.NUMBER_OF_CELLS_COLUMNS),
 	Vector2(1, 0), self.ghost_packed_scene, true)
-	self.place_ghosts(self.game_board.matrix_of_cells,
-	int(self.game_board.NUMBER_OF_CELLS_COLUMNS),
-	int(self.game_board.NUMBER_OF_CELLS_ROWS),
-	Vector2(0, 1), self.ghost_packed_scene, false)
 
 func _on_Board_board_created(board):
 	self.game_board = board
