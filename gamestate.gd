@@ -157,7 +157,7 @@ func end_game():
 
 	emit_signal("game_ended")
 	players.clear()
-	get_tree().set_network_peer(null) # End networking
+	#get_tree().set_network_peer(null) # End networking
 
 func _ready():
 	get_tree().connect("network_peer_connected", self, "_player_connected")
