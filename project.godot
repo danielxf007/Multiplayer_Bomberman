@@ -98,11 +98,6 @@ _global_script_classes=[ {
 "class": "UtilFunctions",
 "language": "GDScript",
 "path": "res://util/utilFunctions.gd"
-}, {
-"base": "StaticBody2D",
-"class": "Wall",
-"language": "GDScript",
-"path": "res://wall/wall.gd"
 } ]
 _global_script_class_icons={
 "Board": "",
@@ -122,18 +117,17 @@ _global_script_class_icons={
 "ObjectPlacer": "",
 "Obstacle": "",
 "Tuple": "",
-"UtilFunctions": "",
-"Wall": ""
+"UtilFunctions": ""
 }
 
 [application]
 
 config/name="Multiplayer Bomber"
-run/main_scene="res://lobby.tscn"
+run/main_scene="res://networking/lobby.tscn"
 
 [autoload]
 
-gamestate="*res://gamestate.gd"
+gamestate="*res://networking/gamestate.gd"
 
 [debug]
 
